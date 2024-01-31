@@ -1,10 +1,6 @@
 import requests
 import tkinter as tk
 from config import HEADERS
-# from tkinter import messagebox
-# from PIL import Image, ImageTk
-# from urllib.request import urlopen
-# from io import BytesIO
 
 
 def search_recipes(search_params, number=None):
@@ -42,41 +38,13 @@ def get_recipe_instructions(recipe_id):
     return instructions_data
 
 
-# def format_instructions(recipe_id, results_text):
-#     try:
-#         instructions_data = get_recipe_instructions(recipe_id)
-#
-#         for step in instructions_data[0]['steps']:
-#             formatted_step = f"Step {step['number']}: {step['step']}\n"
-#
-#             if step['ingredients']:
-#                 formatted_step += "Ingredients:\n"
-#                 for ingredient in step['ingredients']:
-#                     formatted_step += f"  - {ingredient['name']}\n"
-#
-#             if step['equipment']:
-#                 formatted_step += "Equipment:\n"
-#                 for equipment in step['equipment']:
-#                     formatted_step += f"  - {equipment['name']}\n"
-#
-#             if 'length' in step and 'unit' in step['length']:
-#                 length_unit = step['length']['unit']
-#                 length_number = step['length']['number']
-#                 formatted_step += f"Length: {length_number} {length_unit}\n"
-#
-#             formatted_step += "\n"  # Separate steps with a blank line
-#             results_text.insert(tk.END, formatted_step)
-#
-#     except ValueError:
-#         messagebox.showerror("Invalid ID")
-
-
 def display_recipes(recipes, text_widget):
     text_widget.config(state=tk.NORMAL)
     text_widget.delete(1.0, tk.END)  # Clears previous results
 
     for result in recipes:
         text_widget.insert(tk.END, f"ID: {result['id']}\nName: {result['title']}\n\n")
+        # TODO: Implement images
         # text_widget.insert(tk.END, f"ID: {result['id']}")
         # # Display image
         # image_url = result['image']
