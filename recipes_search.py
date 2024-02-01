@@ -12,6 +12,7 @@ def search_recipes(search_params, number=None):
 
     recipe_response = requests.get(url=recipe_search_url, params=params, headers=HEADERS)
     recipes_data = recipe_response.json()
+    print(recipes_data)
 
     return recipes_data["results"]
 
@@ -39,22 +40,28 @@ def get_recipe_instructions(recipe_id):
 
 
 def display_recipes(recipes, text_widget):
+    print("display_recipes called")
     text_widget.config(state=tk.NORMAL)
     text_widget.delete(1.0, tk.END)  # Clears previous results
 
-    for result in recipes:
-        text_widget.insert(tk.END, f"ID: {result['id']}\nName: {result['title']}\n\n")
-        # TODO: Implement images
-        # text_widget.insert(tk.END, f"ID: {result['id']}")
-        # # Display image
-        # image_url = result['image']
-        # if image_url:
-        #     response = requests.get(image_url)
-        #     image_data = BytesIO(response.content)
-        #     image = Image.open(image_data)
-        #     image = ImageTk.PhotoImage(image)
-        #     canvas.create_image(10, 10, anchor=tk.NW, image=image)
+    if not recipes:
+        print("No recipes to display.")
+    else:
+        for result in recipes:
+            print(f"Processing recipe ID: {result['id']}")
+            text_widget.insert(tk.END, f"ID: {result['id']}\nName: {result['title']}\n\n")
+            # TODO: Implement images
+            # text_widget.insert(tk.END, f"ID: {result['id']}")
+            # # Display image
+            # image_url = result['image']
+            # if image_url:
+            #     response = requests.get(image_url)
+            #     image_data = BytesIO(response.content)
+            #     image = Image.open(image_data)
+            #     image = ImageTk.PhotoImage(image)
+            #     canvas.create_image(10, 10, anchor=tk.NW, image=image)
 
-        text_widget.insert(tk.END, "\n")  # Add a line break after each result
+            text_widget.insert(tk.END, "\n")  # Add a line break after each result
+            print("Finished processing recipes")
 
     text_widget.config(state=tk.DISABLED)

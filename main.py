@@ -41,9 +41,8 @@ class PantryCraft(tk.Tk):
 if __name__ == "__main__":
     app = PantryCraft()
     app.title("PantryCraft")
-    app.geometry("1440x948")
+    app.geometry("1440x915")
     app.mainloop()
-
 
 #
 #
@@ -71,24 +70,24 @@ if __name__ == "__main__":
 #     display_recipes(recipes=recipes, text_widget=results_text)
 
 
-def format_instructions(instructions_data):
-    formatted_text = ""
-    for section in instructions_data:
-        formatted_text += f"{section['name']}:\n"
-        for step in section['steps']:
-            formatted_text += f"{step['number']}. {step['step']}\n"
-            if 'ingredients' in step:
-                formatted_text += "   - Ingredients: " + ", ".join(
-                    ingredient['name'] for ingredient in step['ingredients']) + "\n"
-            if 'equipment' in step:
-                equipment_list = [equipment['name'] for equipment in step['equipment']]
-                if equipment_list:
-                    formatted_text += "   - Equipment: " + ", ".join(equipment_list) + "\n"
-            if 'length' in step:
-                formatted_text += f"   - Time: {step['length']['number']} {step['length']['unit']}\n"
-        formatted_text += "\n"
-
-    return formatted_text
+# def format_instructions(instructions_data):
+#     formatted_text = ""
+#     for section in instructions_data:
+#         formatted_text += f"{section['name']}:\n"
+#         for step in section['steps']:
+#             formatted_text += f"{step['number']}. {step['step']}\n"
+#             if 'ingredients' in step:
+#                 formatted_text += "   - Ingredients: " + ", ".join(
+#                     ingredient['name'] for ingredient in step['ingredients']) + "\n"
+#             if 'equipment' in step:
+#                 equipment_list = [equipment['name'] for equipment in step['equipment']]
+#                 if equipment_list:
+#                     formatted_text += "   - Equipment: " + ", ".join(equipment_list) + "\n"
+#             if 'length' in step:
+#                 formatted_text += f"   - Time: {step['length']['number']} {step['length']['unit']}\n"
+#         formatted_text += "\n"
+#
+#     return formatted_text
 
 # def get_recipe_instructions_button(recipe_id):
 #     try:

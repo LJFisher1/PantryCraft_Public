@@ -1,5 +1,4 @@
 import tkinter as tk
-from config import FONT
 from .meal_planner_frame import MealPlanner
 from .search_by_ingredient_frame import SearchByIngredient
 from .shopping_list_frame import ShoppingList
@@ -35,6 +34,7 @@ class MainMenu(tk.Frame):
         search_recipes_button = tk.Button(self, text="Search Recipes", width=85, height=10,
                                           command=lambda: controller.show_frame(SearchRecipes))
         search_recipes_button.grid(row=3, column=0, pady=50, padx=58)
+        print("SearchRecipes frame initialized.")
 
         create_with_pantry_button = tk.Button(self, text="Create with Pantry", width=85, height=10,
                                               command=lambda: controller.show_frame(CreateWithPantry))
