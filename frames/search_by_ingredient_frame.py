@@ -1,5 +1,5 @@
 import tkinter as tk
-from config import FONT
+from config import HEADER_FONT
 
 
 class SearchByIngredient(tk.Frame):
@@ -7,7 +7,7 @@ class SearchByIngredient(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        label = tk.Label(self, text="Search by Ingredient", font=FONT)
+        label = tk.Label(self, text="Search by Ingredient", font=HEADER_FONT)
         label.grid(row=0, column=0, pady=10, padx=10)
 
         from frames.main_menu_frame import MainMenu

@@ -8,7 +8,8 @@ from frames.search_recipes_frame import SearchRecipes
 from frames.create_with_pantry_frame import CreateWithPantry
 
 FRAMES_LIST = (
-    MainMenu, MealPlanner, SearchByIngredient, ShoppingList, PantryInventory, SearchRecipes, CreateWithPantry)
+    MainMenu, MealPlanner, SearchByIngredient, ShoppingList, PantryInventory, SearchRecipes, CreateWithPantry
+)
 
 
 # from config import FONT

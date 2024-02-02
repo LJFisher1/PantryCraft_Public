@@ -1,5 +1,5 @@
 import tkinter as tk
-from config import FONT
+from config import HEADER_FONT
 
 
 class PantryInventory(tk.Frame):
@@ -7,7 +7,7 @@ class PantryInventory(tk.Frame):
         tk.Frame.__init__(self, parent)
         self.controller = controller
 
-        label = tk.Label(self, text="Pantry Inventory", font=FONT)
+        label = tk.Label(self, text="Pantry Inventory", font=HEADER_FONT)
         label.grid(row=0, column=0, pady=10, padx=10)
 
         from .main_menu_frame import MainMenu
