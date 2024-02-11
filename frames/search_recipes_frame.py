@@ -50,7 +50,6 @@ class SearchRecipes(tk.Frame):
         self.image_canvas = tk.Canvas(self, width=100, height=100)
         self.image_canvas.grid(row=3, column=0, padx=0, pady=10, sticky='nsew')
 
-
     def back_to_main_menu(self):
         from frames.main_menu_frame import MainMenu
         self.controller.show_frame(MainMenu)
