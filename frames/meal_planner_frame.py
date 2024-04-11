@@ -33,9 +33,6 @@ class MealPlanner(tk.Frame):
         self.meal_entry = tk.Text(self, font=ENTRY_FONT, height=20, width=40)
         self.meal_entry.grid(row=1, column=1, pady=10, padx=10, sticky="e")
 
-        # Pre-fill meal entry with headings
-        # self.pre_fill_meal_entry()
-
         # Save meal button
         save_button = tk.Button(self, text="Save Meals", command=self.save_meal)
         save_button.grid(row=1, column=2, pady=10, padx=10, sticky="w")
@@ -67,9 +64,9 @@ class MealPlanner(tk.Frame):
     def retrieve_meals(self, event=None):
         selected_date = self.calendar.get_date()
         selected_date = datetime.strptime(selected_date, "%m/%d/%y").strftime("%m/%d/%Y")  # Convert date format
-        print("(RM)Selected Date:", selected_date)  # Debug print
+        # print("(RM)Selected Date:", selected_date)  # Debug print
         meals_for_date = self.get_meals_for_date(selected_date)
-        print("(RM)Meals for Date:", meals_for_date)  # Debug print
+        # print("(RM)Meals for Date:", meals_for_date)  # Debug print
         self.meal_entry.delete("1.0", tk.END)  # Clear the text box
         for meal in meals_for_date:
             self.meal_entry.insert(tk.END, meal + "\n")
@@ -82,7 +79,6 @@ class MealPlanner(tk.Frame):
         if meal:
             self.add_meal_to_date(formatted_date, meal)
             self.save_meals_to_file()
-        #   self.retrieve_meals()
         self.meal_entry.delete("1.0", tk.END)  # Clear the text box
 
     def save_meals_to_file(self):
@@ -92,18 +88,6 @@ class MealPlanner(tk.Frame):
                 for date, meals in self.meals.items():
                     for meal in meals:
                         file.write(f"{date}\n{meal}\n")
-                    # if date not in self.meals.items():
-                    #     file.write(date + "\n")
-                    #     if meals not in self.meals.items():
-                    #         for meal in meals:
-                    #             file.write(meal + "\n")
-                    # elif meal in self.meals.items():
-                    #     pass
-                    # elif date in self.meals.items and meal not in self.meals.items():
-                    #     for meal in meals:
-                    #         file.write(meal + "\n")
-                    # # else:
-                    # #     pass
         except Exception as e:
             print("Error saving meals to file:", e)
 
@@ -119,16 +103,16 @@ class MealPlanner(tk.Frame):
                     if '/' in line:
                         if current_date is not None:
                             self.meals[current_date] = current_meals
-                            print("Loaded meals for date:", current_date)  # Debug print
-                            print("Meals:", current_meals)  # Debug print
+                            # print("Loaded meals for date:", current_date)  # Debug print
+                            # print("Meals:", current_meals)  # Debug print
                         current_date = datetime.strptime(line, "%m/%d/%y").strftime("%m/%d/%Y")
                         current_meals = []
                     else:
                         current_meals.append(line)
                 if current_date is not None:
                     self.meals[current_date] = current_meals
-                    print("Loaded meals for date:", current_date)  # Debug print
-                    print("Meals:", current_meals)  # Debug print
+                    # print("Loaded meals for date:", current_date)  # Debug print
+                    # print("Meals:", current_meals)  # Debug print
         except FileNotFoundError:
             print("Error: File Not Found")  # If the file doesn't exist, ignore and start with empty meals dictionary
         except Exception as e:
