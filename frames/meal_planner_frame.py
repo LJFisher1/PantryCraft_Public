@@ -56,6 +56,7 @@ class MealPlanner(tk.Frame):
         if date not in self.meals:
             self.meals[date] = []
         self.meals[date].append(meal)
+        print(f"Added meal '{meal}' to date '{date}'")  # Debug print
 
     # Retrieve meals
     def get_meals_for_date(self, date):
@@ -64,9 +65,10 @@ class MealPlanner(tk.Frame):
     def retrieve_meals(self, event=None):
         selected_date = self.calendar.get_date()
         selected_date = datetime.strptime(selected_date, "%m/%d/%y").strftime("%m/%d/%Y")  # Convert date format
-        # print("(RM)Selected Date:", selected_date)  # Debug print
+        print("(RM)Selected Date:", selected_date)  # Debug print
         meals_for_date = self.get_meals_for_date(selected_date)
-        # print("(RM)Meals for Date:", meals_for_date)  # Debug print
+        print("(RM)Meals for Date:", meals_for_date)  # Debug print
+        print("(RM)All Dates in Meals: ", list(self.meals.keys()))
         self.meal_entry.delete("1.0", tk.END)  # Clear the text box
         for meal in meals_for_date:
             self.meal_entry.insert(tk.END, meal + "\n")
@@ -75,7 +77,7 @@ class MealPlanner(tk.Frame):
     def save_meal(self):
         meal = self.meal_entry.get("1.0", tk.END).strip()
         selected_date = self.calendar.get_date()
-        formatted_date = datetime.strptime(selected_date, "%m/%d/%y").strftime("%Y-%m-%d")
+        formatted_date = datetime.strptime(selected_date, "%m/%d/%y").strftime("%m/%d/%Y")
         if meal:
             self.add_meal_to_date(formatted_date, meal)
             self.save_meals_to_file()
@@ -84,7 +86,7 @@ class MealPlanner(tk.Frame):
     def save_meals_to_file(self):
         try:
             print("Saving meals to file:", self.meals_file)  # Debug print
-            with open(self.meals_file, "a") as file:
+            with open(self.meals_file, "w") as file:  # Open file in write mode (clears existing content)
                 for date, meals in self.meals.items():
                     for meal in meals:
                         file.write(f"{date}\n{meal}\n")
@@ -100,20 +102,27 @@ class MealPlanner(tk.Frame):
                     line = line.strip()
                     if not line:
                         continue
-                    if '/' in line:
-                        if current_date is not None:
-                            self.meals[current_date] = current_meals
-                            # print("Loaded meals for date:", current_date)  # Debug print
-                            # print("Meals:", current_meals)  # Debug print
-                        current_date = datetime.strptime(line, "%m/%d/%y").strftime("%m/%d/%Y")
-                        current_meals = []
-                    else:
-                        current_meals.append(line)
+                    print("Reading line:", line)  # Debug print
+                    try:
+                        if '/' in line and len(line.split('/')) == 3:  # Check if the line is in the correct format
+                            if current_date is not None:
+                                if current_date not in self.meals:
+                                    self.meals[current_date] = current_meals
+                                    print("Loaded meals for date:", current_date)  # Debug print
+                                    print("Meals:", current_meals)  # Debug print
+                                current_meals = []
+                            current_date = datetime.strptime(line, "%m/%d/%Y").strftime("%m/%d/%Y")
+                        else:
+                            current_meals.append(line)
+                    except Exception as e:
+                        print("Error parsing line:", line)  # Debug print
+                        print("Error details:", e)  # Debug print
                 if current_date is not None:
-                    self.meals[current_date] = current_meals
-                    # print("Loaded meals for date:", current_date)  # Debug print
-                    # print("Meals:", current_meals)  # Debug print
+                    if current_date not in self.meals:
+                        self.meals[current_date] = current_meals
+                        print("Loaded meals for date:", current_date)  # Debug print
+                        print("Meals:", current_meals)  # Debug print
         except FileNotFoundError:
-            print("Error: File Not Found")  # If the file doesn't exist, ignore and start with empty meals dictionary
+            print("Error: File Not Found")
         except Exception as e:
             print("Error loading meals from file:", e)
