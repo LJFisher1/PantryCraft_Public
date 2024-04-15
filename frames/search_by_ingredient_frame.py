@@ -1,6 +1,6 @@
 import tkinter as tk
 from config import HEADER_FONT, LABEL_FONT, ENTRY_FONT
-from search_by_ingredient import search_by_ingredient
+from recipes_search import search_recipes_by_ingredient
 
 
 class SearchByIngredient(tk.Frame):
@@ -34,15 +34,63 @@ class SearchByIngredient(tk.Frame):
         self.item_entry_four.grid(row=4, column=1, padx=10, pady=10)
 
         # Search Button
-        sr_button = tk.Button(self, text="Search", command=search_by_ingredient(), font=LABEL_FONT)
+        sr_button = tk.Button(self, text="Search", command=self.search_by_ingredient_button, font=LABEL_FONT)
         sr_button.grid(row=6, column=1, padx=10)
 
         # Results window
-        self.results_text = tk.Text(self, height=20, width=40, state=tk.DISABLED, borderwidth=1, wrap=tk.WORD,
+        self.results_text = tk.Text(self, height=20, width=55, state=tk.DISABLED, borderwidth=1, wrap=tk.WORD,
                                     font=ENTRY_FONT)
         self.results_text.grid(row=1, column=3, rowspan=4, sticky='nse')
 
         from frames.main_menu_frame import MainMenu
 
         back_button = tk.Button(self, text="Back to Main Menu", command=lambda: controller.show_frame(MainMenu))
-        back_button.grid(row=0, column=4, pady=5)
+        back_button.grid(row=0, column=3, pady=5, sticky='e')
+
+    def search_by_ingredient_button(self):
+        try:
+            # Get input from the user
+            ingredient_one = self.item_entry_one.get()
+            ingredient_two = self.item_entry_two.get()
+            ingredient_three = self.item_entry_three.get()
+            ingredient_four = self.item_entry_four.get()
+
+            # Prepare list of ingredients
+            ingredients = [ingredient for ingredient in
+                           [ingredient_one, ingredient_two, ingredient_three, ingredient_four] if ingredient]
+
+            # Default value for number
+            number = 10
+
+            recipes = search_recipes_by_ingredient(",".join(ingredients), number)
+
+            self.display_recipes(recipes)
+
+        except Exception as e:
+            print("Error: ", e)
+
+    def display_recipes(self, recipes):
+        self.results_text.config(state=tk.NORMAL)
+        self.results_text.delete('1.0', tk.END)
+        # Display new results
+        for recipe in recipes:
+            recipe_title = recipe.get('title', 'Unknown Title')
+            recipe_used_ingredients = recipe.get('usedIngredients', [])
+            recipe_image = recipe.get('image', 'No Image Available')
+
+            # Format used ingredients
+            used_ingredients_info = ""
+            for ingredient in recipe_used_ingredients:
+                ingredient_name = ingredient.get('name', 'Unknown Ingredient')
+                ingredient_amount = ingredient.get('amount', 'Unknown Amount')
+                ingredient_unit = ingredient.get('unit', 'Unknown Unit')
+                used_ingredients_info += f"{ingredient_amount} {ingredient_unit} {ingredient_name}\n"
+
+            recipe_info = f"Title: {recipe_title}\nUsed Ingredients:\n{used_ingredients_info}\nImage: {recipe_image}\n\n"
+
+            self.results_text.insert(tk.END, f"{recipe_info}\n")
+
+        self.results_text.config(state=tk.DISABLED)
+
+        # Debug print
+        print(recipes)

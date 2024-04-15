@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a75512d-ce09-4edf-aecf-fecfec53cf7b" name="Changes" comment="Install requests / prune code">
-      <change afterPath="$PROJECT_DIR$/search_by_ingredient.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frames/search_by_ingredient_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/search_by_ingredient_frame.py" afterDir="false" />
     </list>
@@ -26,24 +25,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main_menu_frame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.meal_planner_frame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.recipes_search.executor&quot;: &quot;Run&quot;,
-    &quot;Python.search_recipes_frame.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PyCharm Projects/Pantry_Craft&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.main.executor": "Run",
+    "Python.main_menu_frame.executor": "Run",
+    "Python.meal_planner_frame.executor": "Run",
+    "Python.recipes_search.executor": "Run",
+    "Python.search_by_ingredient_frame.executor": "Run",
+    "Python.search_recipes_frame.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/PyCharm Projects/Pantry_Craft"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
+        <option value="bundled-python-sdk-09665e90c3a7-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.15026.15" />
       </set>
     </attachedChunks>
   </component>
