@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="1a75512d-ce09-4edf-aecf-fecfec53cf7b" name="Changes" comment="Install requests / prune code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frames/meal_planner_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/meal_planner_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/pantry_inventory_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/pantry_inventory_frame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meals.txt" beforeDir="false" afterPath="$PROJECT_DIR$/meals.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pantry_inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pantry_inventory.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +34,7 @@
     "Python.main.executor": "Run",
     "Python.main_menu_frame.executor": "Run",
     "Python.meal_planner_frame.executor": "Run",
+    "Python.pantry_inventory_frame.executor": "Run",
     "Python.recipes_search.executor": "Run",
     "Python.search_by_ingredient_frame.executor": "Run",
     "Python.search_recipes_frame.executor": "Run",

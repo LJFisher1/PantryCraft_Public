@@ -1,60 +1,79 @@
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
-Banana, 5
-Cauliflower, 6
-Cream of Mushroom Soup, 3
-Tuna Can, 5
+Bananas, 5
+Apples, 4
+Oranges, 7
+Milk, 2
+Eggs, 12
+Bread, 3
+Butter, 1
+Cheese, 4
+Carrots, 6
+Tomatoes, 3
+Spinach, 2
+Chicken Breast, 2
+Salmon Fillets, 2
+Rice, 5
+Pasta, 3
+Onions, 4
+Garlic, 6
+Bell Peppers, 3
+Lettuce, 1
+Potatoes, 5
+Cucumbers, 4
+Strawberries, 8
+Blueberries, 3
+Raspberries, 5
+Blackberries, 2
+Grapes, 6
+Watermelon, 1
+Pineapple, 2
+Peaches, 4
+Plums, 3
+Apricots, 2
+Mangoes, 2
+Kiwi, 3
+Pears, 4
+Cherries, 5
+Green Beans, 3
+Asparagus, 2
+Broccoli, 4
+Cauliflower, 3
+Brussels Sprouts, 2
+Zucchini, 4
+Squash, 3
+Corn, 5
+Celery, 2
+Radishes, 3
+Mushrooms, 4
+Artichokes, 2
+Avocado, 3
+Pumpkin, 2
+Eggplant, 4
+Beets, 3
+Cabbage, 2
+Kale, 5
+Arugula, 3
+Endive, 2
+Turnips, 4
+Parsnips, 3
+Rutabaga, 2
+Quinoa, 4
+Barley, 3
+Couscous, 2
+Farro, 4
+Bulgur, 3
+Millet, 2
+Oats, 4
+Walnuts, 3
+Almonds, 5
+Pecans, 2
+Peanuts, 4
+Cashews, 3
+Pistachios, 2
+Hazelnuts, 4
+Macadamia Nuts, 3
+Sunflower Seeds, 2
+Pumpkin Seeds, 4
+Chia Seeds, 3
+Flaxseeds, 2
+Sesame Seeds, 4
+Poppy Seeds, 3
