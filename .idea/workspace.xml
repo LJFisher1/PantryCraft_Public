@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a75512d-ce09-4edf-aecf-fecfec53cf7b" name="Changes" comment="Install requests / prune code">
+      <change afterPath="$PROJECT_DIR$/shopping_list.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/meal_planner_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/meal_planner_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/pantry_inventory_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/pantry_inventory_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meals.txt" beforeDir="false" afterPath="$PROJECT_DIR$/meals.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pantry_inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pantry_inventory.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/shopping_list_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/shopping_list_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/search_by_ingredient.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,13 +22,16 @@
   &quot;associatedIndex&quot;: 7
 }</component>
   <component name="ProjectId" id="2bjPbjmIx11vgCl16zkn92jMLt3" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
     "Python.main.executor": "Run",
     "Python.main_menu_frame.executor": "Run",
     "Python.meal_planner_frame.executor": "Run",
@@ -73,6 +74,7 @@
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Install requests / prune code" />
     <option name="LAST_COMMIT_MESSAGE" value="Install requests / prune code" />
   </component>
