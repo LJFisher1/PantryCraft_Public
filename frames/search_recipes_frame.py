@@ -1,6 +1,6 @@
 import tkinter as tk
 from config import HEADER_FONT, LABEL_FONT, ENTRY_FONT
-from recipes_search import search_recipes, display_recipes
+from recipes_search import search_recipes, display_recipes, instructions_window
 
 
 class SearchRecipes(tk.Frame):
@@ -34,7 +34,11 @@ class SearchRecipes(tk.Frame):
 
         # Button
         sr_button = tk.Button(self, text="Search Recipes", command=self.search_recipes_button, font=LABEL_FONT)
-        sr_button.grid(row=1, column=2, padx=10, rowspan=2)
+        sr_button.grid(row=1, column=2, padx=10)
+
+        # Recipe instructions button
+        fetch_button = tk.Button(self, text="Get Instructions", command=instructions_window)
+        fetch_button.grid(row=2, column=2, pady=5)
 
         # Text widget for displaying results
         self.results_text = tk.Text(self, height=20, width=60, state=tk.DISABLED, borderwidth=2, wrap=tk.WORD,

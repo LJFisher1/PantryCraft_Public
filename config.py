@@ -14,8 +14,14 @@ def format_instructions(instructions_data):
         for step in section['steps']:
             formatted_text += f"{step['number']}. {step['step']}\n"
             if 'ingredients' in step:
-                formatted_text += "   - Ingredients: " + ", ".join(
-                    ingredient['name'] for ingredient in step['ingredients']) + "\n"
+                formatted_text += "   - Ingredients: "
+                ingredients_list = []
+                for ingredient in step['ingredients']:
+                    if 'originalString' in ingredient:
+                        ingredients_list.append(ingredient['originalString'])
+                    elif 'name' in ingredient:
+                        ingredients_list.append(ingredient['name'])
+                formatted_text += ", ".join(ingredients_list) + "\n"
             if 'equipment' in step:
                 equipment_list = [equipment['name'] for equipment in step['equipment']]
                 if equipment_list:

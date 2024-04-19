@@ -1,7 +1,6 @@
 import tkinter as tk
 from config import HEADER_FONT, LABEL_FONT, ENTRY_FONT
-from recipes_search import search_recipes_by_ingredient
-import random
+from recipes_search import search_recipes_by_ingredient, instructions_window
 
 
 class CreateWithPantry(tk.Frame):
@@ -40,6 +39,10 @@ class CreateWithPantry(tk.Frame):
         back_button = tk.Button(self, text="Back to Main Menu", command=lambda: controller.show_frame(MainMenu))
         back_button.grid(row=0, column=2, pady=5)
 
+        # Recipe instructions button
+        fetch_button = tk.Button(self, text="Get Instructions", command=instructions_window)
+        fetch_button.grid(row=1, column=2, pady=5)
+
     def load_pantry_inventory(self):
         # Code to load and display pantry inventory goes here
         try:
@@ -56,7 +59,7 @@ class CreateWithPantry(tk.Frame):
             recipes = search_recipes_by_ingredient(ingredients_input, number=10)
             if recipes:
                 for recipe in recipes:
-                    self.meals_display_text.insert(tk.END, f"{recipe['title']}\n\n")
+                    self.meals_display_text.insert(tk.END, f"Title: {recipe['title']}\nID: {recipe['id']}\n\n")
             else:
                 self.meals_display_text.insert(tk.END, "No meals found based on the ingredients in pantry.")
         else:

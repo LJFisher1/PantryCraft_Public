@@ -1,6 +1,6 @@
 import tkinter as tk
 from config import HEADER_FONT, LABEL_FONT, ENTRY_FONT
-from recipes_search import search_recipes_by_ingredient
+from recipes_search import search_recipes_by_ingredient, instructions_window
 
 
 class SearchByIngredient(tk.Frame):
@@ -36,6 +36,10 @@ class SearchByIngredient(tk.Frame):
         # Search Button
         sr_button = tk.Button(self, text="Search", command=self.search_by_ingredient_button, font=LABEL_FONT)
         sr_button.grid(row=6, column=1, padx=10)
+
+        # Fetch Button
+        fetch_button = tk.Button(self, text="Get Instructions", command=instructions_window)
+        fetch_button.grid(row=6, column=0, padx=10)
 
         # Results window
         self.results_text = tk.Text(self, height=20, width=55, state=tk.DISABLED, borderwidth=1, wrap=tk.WORD,
@@ -76,7 +80,8 @@ class SearchByIngredient(tk.Frame):
         for recipe in recipes:
             recipe_title = recipe.get('title', 'Unknown Title')
             recipe_used_ingredients = recipe.get('usedIngredients', [])
-            recipe_image = recipe.get('image', 'No Image Available')
+            # recipe_image = recipe.get('image', 'No Image Available')
+            recipe_id = recipe.get('id', 'No id available')
 
             # Format used ingredients
             used_ingredients_info = ""
@@ -86,11 +91,12 @@ class SearchByIngredient(tk.Frame):
                 ingredient_unit = ingredient.get('unit', 'Unknown Unit')
                 used_ingredients_info += f"{ingredient_amount} {ingredient_unit} {ingredient_name}\n"
 
-            recipe_info = f"Title: {recipe_title}\nUsed Ingredients:\n{used_ingredients_info}\nImage: {recipe_image}\n\n"
+            # recipe_info = f"Title: {recipe_title}\nUsed Ingredients:\n{used_ingredients_info}\nImage: {recipe_image}\nID: {recipe_id}\n\n"
+            recipe_info = f"Title: {recipe_title}\nID: {recipe_id}\nUsed Ingredients:\n{used_ingredients_info}\n\n"
 
             self.results_text.insert(tk.END, f"{recipe_info}\n")
 
         self.results_text.config(state=tk.DISABLED)
 
         # Debug print
-        print(recipes)
+        # print(recipes)

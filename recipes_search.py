@@ -1,6 +1,6 @@
 import requests
 import tkinter as tk
-from config import HEADERS
+from config import HEADERS, ENTRY_FONT, format_instructions
 from PIL import Image, ImageTk
 from io import BytesIO
 
@@ -30,7 +30,7 @@ def search_recipes_by_ingredient(ingredients_input, number):
 
     response = requests.get(url=recipes_by_ingredient_url, params=params, headers=HEADERS)
     recipes_data = response.json()
-
+    # print(recipes_data) # Debug Print
     return recipes_data
 
 
@@ -39,6 +39,43 @@ def get_recipe_instructions(recipe_id):
     response = requests.get(url=instructions_url, headers=HEADERS)
     instructions_data = response.json()
     return instructions_data
+
+
+def instructions_window():
+    def fetch_instructions():
+        recipe_id = recipe_id_entry.get()
+        instructions = get_recipe_instructions(recipe_id)
+        print(f"Recipe ID entered: {recipe_id}")  # Debug print
+        print(instructions)
+        if instructions:
+            instructions_text.config(state=tk.NORMAL)
+            instructions_text.delete('1.0', tk.END)
+            formatted_instructions = format_instructions(instructions)
+            instructions_text.insert(tk.END, formatted_instructions)
+            instructions_text.config(state=tk.DISABLED)
+        else:
+            instructions_text.config(state=tk.NORMAL)
+            instructions_text.delete('1.0', tk.END)
+            instructions_text.insert(tk.END, 'Instructions not found for this recipe.')
+            instructions_text.config(state=tk.DISABLED)
+
+    window = tk.Toplevel()
+    window.title("Recipe Instructions")
+
+    # Label and entry for recipe ID
+    label = tk.Label(window, text="Enter recipe ID")
+    label.pack()
+    recipe_id_entry = tk.Entry(window)
+    recipe_id_entry.pack()
+
+    # Button for fetching
+    fetch_button = tk.Button(window, text="Get Instructions", command=fetch_instructions)
+    fetch_button.pack()
+
+    # Text widget to display instructions
+    instructions_text = tk.Text(window, height=20, width=55, state=tk.DISABLED, borderwidth=1, wrap=tk.WORD,
+                                font=ENTRY_FONT)
+    instructions_text.pack()
 
 
 def load_image(image_url):
@@ -88,36 +125,6 @@ def display_recipes(recipes, text_widget, canvas_widget):
             text_widget.insert(tk.END, "\n")  # Add a line break after each result
     text_widget.config(state=tk.DISABLED)
     return images
-
-    # print(f"Processing recipe ID: {result['id']}")
-    # text_widget.insert(tk.END, f"ID: {result['id']}\nName: {result['title']}\n\n")
-    # text_widget.insert(current_position, f"Name: {result['title']}\n")
-    # # text_widget.insert(tk.END, f"Name: {result['title']}\n\n")
-    # # current_position = text_widget.index(tk.END)
-    #
-    # # Display image
-    # image_url = result['image']
-    # if image_url:
-    #     image = load_image(image_url)
-    #     if image:
-    #         canvas_widget.create_image(0, current_position, anchor=tk.NW, image=image)
-    #         canvas_widget.image = image
-    #         # current_position = text_widget.index(tk.END)
-    #         # display_image(text_widget, image)
-    #     else:
-    #         print("Image loading failed for URL: ", image_url)
-    #
-    # # text_widget.insert(tk.END, "\n")  # Add a line break after each result
-    # text_widget.insert(current_position, "\n")
-    # current_position = text_widget.index(tk.END)
-
-    # # Load image from URL using PIL
-    # pil_image = Image.open(image_url)
-    # # Resize image as needed
-    # resized_image = pil_image.resize((100, 100))
-    # # Convert PIL image to Tkinter PhotoImage
-    # tk_image = ImageTk.PhotoImage(resized_image)
-    # return tk_image
 
 
 def display_image(text_widget, image):
