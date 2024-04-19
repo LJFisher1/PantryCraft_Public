@@ -38,6 +38,39 @@ def get_recipe_instructions(recipe_id):
     instructions_url = f"https://api.spoonacular.com/recipes/{recipe_id}/analyzedInstructions"
     response = requests.get(url=instructions_url, headers=HEADERS)
     instructions_data = response.json()
+
+    if instructions_data and instructions_data[0].get('steps'):
+        for step in instructions_data[0]['steps']:
+            if 'ingredients' in step:
+                for ingredient in step['ingredients']:
+                    ingredient_id = ingredient.get('id')
+                    if ingredient_id:
+                        # Call the endpoint to get ingredient details
+                        ingredient_widget_url = f"https://api.spoonacular.com/recipes/{recipe_id}/ingredientWidget.json"
+                        ingredient_response = requests.get(url=ingredient_widget_url, headers=HEADERS)
+                        ingredient_widget_data = ingredient_response.json()
+                        # Extract the measurements
+                        for widget_ingredient in ingredient_widget_data['ingredients']:
+                            if widget_ingredient.get('id') == ingredient_id:
+                                measurement = None
+                                if 'amount' in widget_ingredient and 'metric' in widget_ingredient['amount']:
+                                    metric_amount = widget_ingredient['amount']['metric']
+                                    if metric_amount['unit']:  # Check if unit value is not empty
+                                        measurement = {
+                                            'amount': metric_amount['value'],
+                                            'unit': metric_amount['unit']
+                                        }
+                                    else:
+                                        measurement = {
+                                            'amount': metric_amount['value'],
+                                            'unit': ''  # Set unit to empty string if it's empty in the API response
+                                        }
+                                else:
+                                    measurement = None
+                                # Add the measurement to the ingredient dictionary
+                                ingredient['measurement'] = measurement
+                            print("Widget Ingredient: ", widget_ingredient)
+
     return instructions_data
 
 
@@ -45,8 +78,8 @@ def instructions_window():
     def fetch_instructions():
         recipe_id = recipe_id_entry.get()
         instructions = get_recipe_instructions(recipe_id)
-        print(f"Recipe ID entered: {recipe_id}")  # Debug print
-        print(instructions)
+        # print(f"Recipe ID entered: {recipe_id}")  # Debug print
+        # print(instructions)
         if instructions:
             instructions_text.config(state=tk.NORMAL)
             instructions_text.delete('1.0', tk.END)

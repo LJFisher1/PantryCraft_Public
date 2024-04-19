@@ -17,11 +17,13 @@ def format_instructions(instructions_data):
                 formatted_text += "   - Ingredients: "
                 ingredients_list = []
                 for ingredient in step['ingredients']:
-                    if 'originalString' in ingredient:
-                        ingredients_list.append(ingredient['originalString'])
-                    elif 'name' in ingredient:
-                        ingredients_list.append(ingredient['name'])
-                formatted_text += ", ".join(ingredients_list) + "\n"
+                    ingredient_str = ingredient['name']
+                    if 'measurement' in ingredient:
+                        measurement = ingredient['measurement']
+                        ingredient_str += f" ({measurement['amount']} {measurement['unit']})"
+                    ingredients_list.append(ingredient_str)
+                formatted_text += ", ".join(
+                    ingredients_list) + "\n"  # Displaying the ingredients along with measurements
             if 'equipment' in step:
                 equipment_list = [equipment['name'] for equipment in step['equipment']]
                 if equipment_list:
