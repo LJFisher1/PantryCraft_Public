@@ -84,7 +84,7 @@ class PantryInventory(tk.Frame):
                 parts = line.split(", ")
                 if len(parts) == 2:
                     item, old_quantity = parts
-                    if item == new_item:
+                    if item.lower() == new_item.lower():
                         old_quantity = int(old_quantity)
                         old_quantity += quantity  # Increment the quantity
                         lines[i] = f"{item}, {old_quantity}"
@@ -130,7 +130,7 @@ class PantryInventory(tk.Frame):
                 if len(parts) == 2:
                     item, quantity = parts
                     quantity = int(quantity)
-                    if item == item_to_remove:
+                    if item.lower() == item_to_remove.lower():
                         quantity -= quantity_to_remove
                         if quantity > 0:
                             new_lines.append(f"{item}, {quantity}")
@@ -145,7 +145,7 @@ class PantryInventory(tk.Frame):
 
                 # Clear the text widget
                 self.inventory_text.config(state=tk.NORMAL)
-                self.inventory_text.delete("1.0", "end")
+                self.inventory_text.delete("1.0", tk.END)
                 # Insert the updated text into the widget
                 self.inventory_text.insert("1.0", updated_text)
                 self.inventory_text.config(state=tk.DISABLED)

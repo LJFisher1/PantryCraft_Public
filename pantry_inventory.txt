@@ -1,87 +1,87 @@
-Bananas, 5
-Apples, 9
-Oranges, 7
-Milk, 2
-Eggs, 12
-Bread, 3
-Butter, 1
-Cheese, 4
-Carrots, 6
-Tomatoes, 3
-Spinach, 2
-Chicken Breast, 2
-Salmon Fillets, 2
-Rice, 5
-Pasta, 3
-Onions, 4
-Garlic, 5
-Bell Peppers, 3
-Lettuce, 1
-Potatoes, 5
-Cucumbers, 4
-Strawberries, 8
-Blueberries, 3
-Raspberries, 5
-Blackberries, 2
-Grapes, 6
-Watermelon, 1
-Pineapple, 2
-Peaches, 4
-Plums, 3
-Apricots, 2
-Mangoes, 2
-Kiwi, 3
-Pears, 4
-Cherries, 5
-Green Beans, 3
-Asparagus, 2
-Broccoli, 4
-Brussels Sprouts, 2
-Zucchini, 4
-Squash, 3
-Corn, 5
-Celery, 2
-Radishes, 3
-Mushrooms, 4
-Artichokes, 2
-Avocado, 3
-Pumpkin, 2
-Eggplant, 4
-Beets, 3
-Cabbage, 2
-Kale, 5
-Arugula, 3
-Endive, 2
-Turnips, 4
-Parsnips, 3
-Rutabaga, 2
-Quinoa, 4
-Barley, 3
-Couscous, 2
-Farro, 4
-Bulgur, 3
-Millet, 2
-Oats, 4
-Walnuts, 3
-Almonds, 5
-Pecans, 2
-Peanuts, 4
-Cashews, 3
-Pistachios, 2
-Hazelnuts, 4
-Macadamia Nuts, 3
-Sunflower Seeds, 2
-Pumpkin Seeds, 4
-Chia Seeds, 3
-Flaxseeds, 2
-Sesame Seeds, 4
-Poppy Seeds, 3
+bananas, 1
+apples, 9
+oranges, 7
+milk, 2
+eggs, 12
+bread, 3
+butter, 1
+cheese, 4
+carrots, 6
+tomatoes, 3
+spinach, 2
+chicken breast, 2
+salmon fillets, 2
+rice, 5
+pasta, 3
+onions, 4
+garlic, 5
+bell peppers, 3
+lettuce, 1
+potatoes, 5
+cucumbers, 4
+strawberries, 8
+blueberries, 3
+raspberries, 5
+blackberries, 2
+grapes, 6
+watermelon, 1
+pineapple, 2
+peaches, 4
+plums, 3
+apricots, 2
+mangoes, 2
+kiwi, 3
+pears, 4
+cherries, 5
+green beans, 3
+asparagus, 2
+broccoli, 4
+brussels sprouts, 2
+zucchini, 4
+squash, 3
+corn, 5
+celery, 2
+radishes, 3
+mushrooms, 4
+artichokes, 2
+avocado, 3
+pumpkin, 2
+eggplant, 4
+beets, 3
+cabbage, 2
+kale, 5
+arugula, 3
+endive, 2
+turnips, 4
+parsnips, 3
+rutabaga, 2
+quinoa, 4
+barley, 3
+couscous, 2
+farro, 4
+bulgur, 3
+millet, 2
+oats, 4
+walnuts, 3
+almonds, 5
+pecans, 2
+peanuts, 4
+cashews, 3
+pistachios, 2
+hazelnuts, 4
+macadamia nuts, 3
+sunflower seeds, 2
+pumpkin seeds, 4
+chia seeds, 3
+flaxseeds, 2
+sesame seeds, 4
+poppy seeds, 3
 pork chops, 6
 apples, 5
 sticks of butter, 4
 box of rice, 3
 cloves of garlic, 3
-Pork Chops, 6
-Sticks of Butter, 4
-Box of Rice, 3
-Cloves of Garlic, 6
+pork chops, 6
+sticks of butter, 4
+box of rice, 3
+cloves of garlic, 6
