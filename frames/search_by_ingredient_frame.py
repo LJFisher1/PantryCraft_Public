@@ -5,30 +5,30 @@ from recipes_search import search_recipes_by_ingredient, instructions_window
 
 class SearchByIngredient(tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+        tk.Frame.__init__(self, parent, bg="Black")
         self.controller = controller
 
         # Title
-        label = tk.Label(self, text="Search by Ingredient", font=HEADER_FONT)
+        label = tk.Label(self, text="Search by Ingredient", font=HEADER_FONT, bg="Black", fg="White")
         label.grid(row=0, column=0, columnspan=4, pady=10, padx=10)
 
         # Ingredient entry
-        ie_label_one = tk.Label(self, text="Enter first ingredient: ", font=LABEL_FONT)
+        ie_label_one = tk.Label(self, text="Enter first ingredient: ", font=LABEL_FONT, bg="Black", fg="White")
         ie_label_one.grid(row=1, column=0, padx=5, pady=(5, 0))
         self.item_entry_one = tk.Entry(self, width=10, highlightthickness=2, font=ENTRY_FONT)
         self.item_entry_one.grid(row=1, column=1, padx=10, pady=5)
 
-        ie_label_two = tk.Label(self, text="Enter second ingredient: ", font=LABEL_FONT)
+        ie_label_two = tk.Label(self, text="Enter second ingredient: ", font=LABEL_FONT, bg="Black", fg="White")
         ie_label_two.grid(row=2, column=0, padx=5, pady=(5, 0))
         self.item_entry_two = tk.Entry(self, width=10, highlightthickness=2, font=ENTRY_FONT)
         self.item_entry_two.grid(row=2, column=1, padx=10, pady=5)
 
-        ie_label_three = tk.Label(self, text="Enter third ingredient: ", font=LABEL_FONT)
+        ie_label_three = tk.Label(self, text="Enter third ingredient: ", font=LABEL_FONT, bg="Black", fg="White")
         ie_label_three.grid(row=3, column=0, padx=5, pady=(5, 0))
         self.item_entry_three = tk.Entry(self, width=10, highlightthickness=2, font=ENTRY_FONT)
         self.item_entry_three.grid(row=3, column=1, padx=10, pady=10)
 
-        ie_label_four = tk.Label(self, text="Enter fourth ingredient: ", font=LABEL_FONT)
+        ie_label_four = tk.Label(self, text="Enter fourth ingredient: ", font=LABEL_FONT, bg="Black", fg="White")
         ie_label_four.grid(row=4, column=0, padx=5, pady=(5, 0))
         self.item_entry_four = tk.Entry(self, width=10, highlightthickness=2, font=ENTRY_FONT)
         self.item_entry_four.grid(row=4, column=1, padx=10, pady=10)
@@ -38,7 +38,7 @@ class SearchByIngredient(tk.Frame):
         sr_button.grid(row=6, column=1, padx=10)
 
         # Fetch Button
-        fetch_button = tk.Button(self, text="Get Instructions", command=instructions_window)
+        fetch_button = tk.Button(self, text="Get Instructions", font=ENTRY_FONT, command=instructions_window)
         fetch_button.grid(row=6, column=0, padx=10)
 
         # Results window
@@ -48,7 +48,8 @@ class SearchByIngredient(tk.Frame):
 
         from frames.main_menu_frame import MainMenu
 
-        back_button = tk.Button(self, text="Back to Main Menu", command=lambda: controller.show_frame(MainMenu))
+        back_button = tk.Button(self, text="Back to Main Menu", font=ENTRY_FONT,
+                                command=lambda: controller.show_frame(MainMenu))
         back_button.grid(row=0, column=3, pady=5, sticky='e')
 
     def search_by_ingredient_button(self):

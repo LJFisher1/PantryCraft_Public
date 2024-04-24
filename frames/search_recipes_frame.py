@@ -5,7 +5,7 @@ from recipes_search import search_recipes, display_recipes, instructions_window
 
 class SearchRecipes(tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent, bg="Blue")
+        tk.Frame.__init__(self, parent, bg="Black")
         self.controller = controller
 
         self.columnconfigure(0, weight=1)
@@ -14,20 +14,21 @@ class SearchRecipes(tk.Frame):
         self.columnconfigure(3, weight=1)
         self.rowconfigure(3, weight=1)
 
-        label = tk.Label(self, text="Search Recipes", font=HEADER_FONT)
+        label = tk.Label(self, text="Search Recipes", font=HEADER_FONT, bg="Black", fg="White")
         label.grid(row=0, column=0, columnspan=4, pady=10, padx=10)
 
         back_button = tk.Button(self, text="Back to Main Menu", command=self.back_to_main_menu, font=LABEL_FONT)
         back_button.grid(row=0, column=2, pady=5)
 
         # Entry
-        sr_label = tk.Label(self, text="Enter a recipe: ", font=LABEL_FONT)
+        sr_label = tk.Label(self, text="Enter a recipe: ", font=LABEL_FONT, bg="Black", fg="White")
         sr_label.grid(row=1, column=0, padx=5, pady=(5, 0))
         self.sr_entry = tk.Entry(self, width=40, highlightthickness=2, font=ENTRY_FONT)
         self.sr_entry.grid(row=1, column=1, padx=5)
 
         # Number Entry - Number of results
-        sr_num_label = tk.Label(self, text="Enter number of results (optional): ", font=LABEL_FONT)
+        sr_num_label = tk.Label(self, text="Enter number of results (optional): ", font=LABEL_FONT, bg="Black",
+                                fg="White")
         sr_num_label.grid(row=2, column=0, padx=5)
         self.sr_num_entry = tk.Entry(self, width=40, highlightthickness=2, font=ENTRY_FONT)
         self.sr_num_entry.grid(row=2, column=1, padx=5)
@@ -37,7 +38,7 @@ class SearchRecipes(tk.Frame):
         sr_button.grid(row=1, column=2, padx=10)
 
         # Recipe instructions button
-        fetch_button = tk.Button(self, text="Get Instructions", command=instructions_window)
+        fetch_button = tk.Button(self, text="Get Instructions", font=ENTRY_FONT, command=instructions_window)
         fetch_button.grid(row=2, column=2, pady=5)
 
         # Text widget for displaying results
@@ -49,7 +50,6 @@ class SearchRecipes(tk.Frame):
         scrollbar = tk.Scrollbar(self, command=self.results_text.yview)
         scrollbar.grid(row=3, column=3, sticky="nsew")
         self.results_text.config(yscrollcommand=scrollbar.set)
-        # print("Controller reference: ", self.controller)
 
         self.image_canvas = tk.Canvas(self, width=100, height=100)
         self.image_canvas.grid(row=3, column=0, padx=0, pady=10, sticky='nsew')

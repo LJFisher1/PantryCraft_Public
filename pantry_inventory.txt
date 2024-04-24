@@ -1,5 +1,5 @@
 Bananas, 5
-Apples, 4
+Apples, 9
 Oranges, 7
 Milk, 2
 Eggs, 12
@@ -14,7 +14,7 @@ Salmon Fillets, 2
 Rice, 5
 Pasta, 3
 Onions, 4
-Garlic, 6
+Garlic, 5
 Bell Peppers, 3
 Lettuce, 1
 Potatoes, 5
@@ -36,7 +36,6 @@ Cherries, 5
 Green Beans, 3
 Asparagus, 2
 Broccoli, 4
-Cauliflower, 3
 Brussels Sprouts, 2
 Zucchini, 4
 Squash, 3
@@ -77,3 +76,12 @@ Chia Seeds, 3
 Flaxseeds, 2
 Sesame Seeds, 4
 Poppy Seeds, 3
+pork chops, 6
+apples, 5
+sticks of butter, 4
+box of rice, 3
+cloves of garlic, 3
+Pork Chops, 6
+Sticks of Butter, 4
+Box of Rice, 3
+Cloves of Garlic, 6

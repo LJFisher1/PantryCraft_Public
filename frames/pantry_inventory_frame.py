@@ -6,13 +6,13 @@ from config import HEADER_FONT, LABEL_FONT, ENTRY_FONT
 
 class PantryInventory(tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent, bg="blue")
+        tk.Frame.__init__(self, parent, bg="Black")
         self.controller = controller
 
         self.pantry_inventory = "pantry_inventory.txt"
 
         # Title
-        label = tk.Label(self, text="Pantry Inventory", font=HEADER_FONT)
+        label = tk.Label(self, text="Pantry Inventory", font=HEADER_FONT, bg="Black", fg="White")
         label.grid(row=0, column=0, columnspan=4, pady=10, padx=10)
 
         # Inventory
@@ -32,13 +32,13 @@ class PantryInventory(tk.Frame):
         self.inventory_text.config(yscrollcommand=self.inventory_scrollbar.set)
 
         # Item entry box
-        ie_label = tk.Label(self, text="Enter an item: ", font=LABEL_FONT)
+        ie_label = tk.Label(self, text="Enter an item: ", font=LABEL_FONT, bg="Black", fg="White")
         ie_label.grid(row=1, column=3, padx=5, pady=(5, 0))
         self.item_entry = tk.Entry(self, width=30, highlightthickness=2, font=ENTRY_FONT)
         self.item_entry.grid(row=2, column=3, padx=10, pady=10)
 
         # Entry box for quantity
-        qty_label = tk.Label(self, text="Enter a quantity: ", font=LABEL_FONT)
+        qty_label = tk.Label(self, text="Enter a quantity: ", font=LABEL_FONT, bg="Black", fg="White")
         qty_label.grid(row=3, column=3, padx=5, pady=(5, 0))
         self.qty_entry = tk.Entry(self, width=30, highlightthickness=2, font=ENTRY_FONT)
         self.qty_entry.grid(row=4, column=3, padx=10, pady=5)

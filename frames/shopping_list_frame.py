@@ -4,10 +4,10 @@ from config import HEADER_FONT, LABEL_FONT, ENTRY_FONT
 
 class ShoppingList(tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+        tk.Frame.__init__(self, parent, bg="Black")
         self.controller = controller
 
-        label = tk.Label(self, text="Shopping List", font=HEADER_FONT)
+        label = tk.Label(self, text="Shopping List", font=HEADER_FONT, bg="Black", fg="White")
         label.grid(row=0, column=0, pady=10, padx=10, columnspan=3)
 
         # Text Widget to display shopping list
@@ -18,12 +18,12 @@ class ShoppingList(tk.Frame):
 
         # Entry field for new items
         self.new_item_entry = tk.Entry(self, font=ENTRY_FONT)
-        self.new_item_entry.grid(row=2, column=0, padx=5, sticky='ew')
+        self.new_item_entry.grid(row=2, column=0, padx=10, sticky='ew')
         self.grid_columnconfigure(0, weight=1)
 
         # Button to add new items
         add_button = tk.Button(self, text="Add to list", command=self.add_to_list, font=LABEL_FONT)
-        add_button.grid(row=2, column=1, pady=5, padx=(0, 10))
+        add_button.grid(row=2, column=1, pady=15, padx=(0, 10))
 
         # Button to remove completed items
         remove_button = tk.Button(self, text="Remove completed items", command=self.remove_completed_items,
@@ -31,7 +31,8 @@ class ShoppingList(tk.Frame):
         remove_button.grid(row=1, column=1, pady=5, padx=10)
         from .main_menu_frame import MainMenu
 
-        back_button = tk.Button(self, text="Back to Main Menu", command=lambda: controller.show_frame(MainMenu))
+        back_button = tk.Button(self, text="Back to Main Menu", font=ENTRY_FONT,
+                                command=lambda: controller.show_frame(MainMenu))
         back_button.grid(row=0, column=1, pady=5)
 
         # Bind mouse clicks to the text widget

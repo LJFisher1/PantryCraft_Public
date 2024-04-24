@@ -5,28 +5,28 @@ from recipes_search import search_recipes_by_ingredient, instructions_window
 
 class CreateWithPantry(tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+        tk.Frame.__init__(self, parent, bg="Black")
         self.controller = controller
 
         # Title
-        label = tk.Label(self, text="Create with Pantry", font=HEADER_FONT)
+        label = tk.Label(self, text="Create with Pantry", font=HEADER_FONT, bg="Black", fg="White")
         label.grid(row=0, column=0, columnspan=2, pady=10, padx=10)
 
         # Pantry inventory label
-        self.pantry_inventory_label = tk.Label(self, text="You have: ", font=LABEL_FONT)
-        self.pantry_inventory_label.grid(row=1, column=0, sticky='n')
+        self.pantry_inventory_label = tk.Label(self, text="You have: ", font=LABEL_FONT, bg="Black", fg="White")
+        self.pantry_inventory_label.grid(row=2, column=0, sticky='n')
 
         # Pantry Inventory text box
         self.pantry_inventory_text = tk.Text(self, height=20, width=40, font=ENTRY_FONT)
-        self.pantry_inventory_text.grid(row=2, column=0, padx=10, pady=10, sticky='nsew')
+        self.pantry_inventory_text.grid(row=3, column=0, padx=10, pady=10, sticky='nsew')
 
         # Meal display label
-        self.meals_display_label = tk.Label(self, text="You can make: ", font=LABEL_FONT)
-        self.meals_display_label.grid(row=1, column=1, sticky='n')
+        self.meals_display_label = tk.Label(self, text="You can make: ", font=LABEL_FONT, bg="Black", fg="White")
+        self.meals_display_label.grid(row=2, column=1, sticky='n')
 
         # Meal display box
         self.meals_display_text = tk.Text(self, height=20, width=40, font=ENTRY_FONT)
-        self.meals_display_text.grid(row=2, column=1, padx=10, pady=10, sticky='nsew')
+        self.meals_display_text.grid(row=3, column=1, padx=10, pady=10, sticky='nsew')
 
         # Load pantry inventory
         self.load_pantry_inventory()
@@ -36,12 +36,13 @@ class CreateWithPantry(tk.Frame):
 
         from .main_menu_frame import MainMenu
 
-        back_button = tk.Button(self, text="Back to Main Menu", command=lambda: controller.show_frame(MainMenu))
-        back_button.grid(row=0, column=2, pady=5)
+        back_button = tk.Button(self, text="Back to Main Menu", font=ENTRY_FONT,
+                                command=lambda: controller.show_frame(MainMenu))
+        back_button.grid(row=0, column=1, pady=5, padx=5, sticky='e')
 
         # Recipe instructions button
-        fetch_button = tk.Button(self, text="Get Instructions", command=instructions_window)
-        fetch_button.grid(row=1, column=2, pady=5)
+        fetch_button = tk.Button(self, text="Get Instructions", font=ENTRY_FONT, command=instructions_window)
+        fetch_button.grid(row=1, column=1, pady=5, padx=5, sticky='e')
 
     def load_pantry_inventory(self):
         # Code to load and display pantry inventory goes here

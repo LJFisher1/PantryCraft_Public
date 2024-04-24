@@ -7,7 +7,7 @@ from config import HEADER_FONT, ENTRY_FONT
 
 class MealPlanner(tk.Frame):
     def __init__(self, parent, controller):
-        tk.Frame.__init__(self, parent)
+        tk.Frame.__init__(self, parent, bg="Black")
         self.controller = controller
         self.meals = {}  # Dictionary for the meals
 
@@ -18,7 +18,7 @@ class MealPlanner(tk.Frame):
         # Define a path to meal file
         self.meals_file = "meals.txt"
 
-        label = tk.Label(self, text="Meal Planner", font=HEADER_FONT)
+        label = tk.Label(self, text="Meal Planner", font=HEADER_FONT, bg="Black", fg="White")
         label.grid(row=0, column=0, pady=10, padx=10, columnspan=2)
 
         # Frame for calendar
@@ -30,16 +30,17 @@ class MealPlanner(tk.Frame):
         self.calendar.pack(fill="both", expand=True)
 
         # Text box for meal planning
-        self.meal_entry = tk.Text(self, font=ENTRY_FONT, height=20, width=40)
+        self.meal_entry = tk.Text(self, font=ENTRY_FONT, height=20, width=40, highlightthickness=2)
         self.meal_entry.grid(row=1, column=1, pady=10, padx=10, sticky="e")
 
         # Save meal button
-        save_button = tk.Button(self, text="Save Meals", command=self.save_meal)
-        save_button.grid(row=1, column=2, pady=10, padx=10, sticky="w")
+        save_button = tk.Button(self, text="Save Meals", font=ENTRY_FONT, command=self.save_meal)
+        save_button.grid(row=2, column=0, pady=10, padx=10, sticky="n")
 
         from .main_menu_frame import MainMenu
 
-        back_button = tk.Button(self, text="Back to Main Menu", command=lambda: controller.show_frame(MainMenu))
+        back_button = tk.Button(self, text="Back to Main Menu", font=ENTRY_FONT,
+                                command=lambda: controller.show_frame(MainMenu))
         back_button.grid(row=0, column=1, pady=5, sticky='e')
 
         # Load meals from file
