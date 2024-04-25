@@ -3,6 +3,7 @@ import tkinter as tk
 from tkcalendar import Calendar
 from datetime import datetime
 from config import HEADER_FONT, ENTRY_FONT
+from recipes_search import load_background_image
 
 
 class MealPlanner(tk.Frame):
@@ -10,6 +11,14 @@ class MealPlanner(tk.Frame):
         tk.Frame.__init__(self, parent, bg="Black")
         self.controller = controller
         self.meals = {}  # Dictionary for the meals
+
+        # Load background image
+        background_image = load_background_image("background_images/Meal Planner Test.png")
+        if background_image:
+            # Create a label to hold the image
+            self.background_label = tk.Label(self, image=background_image)
+            self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+            self.background_label.image = background_image  # To keep a reference
 
         # Path for data directory
         self.date_dir = "date"

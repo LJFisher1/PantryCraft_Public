@@ -1,12 +1,19 @@
 import tkinter as tk
 from config import HEADER_FONT, LABEL_FONT, ENTRY_FONT
-from recipes_search import search_recipes, display_recipes, instructions_window
+from recipes_search import search_recipes, display_recipes, instructions_window, load_background_image
 
 
 class SearchRecipes(tk.Frame):
     def __init__(self, parent, controller):
         tk.Frame.__init__(self, parent, bg="Black")
         self.controller = controller
+
+        background_image = load_background_image("background_images/Recipe Search.png")
+        if background_image:
+            # Create a label to hold the image
+            self.background_label = tk.Label(self, image=background_image)
+            self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+            self.background_label.image = background_image  # To keep a reference
 
         self.columnconfigure(0, weight=1)
         self.columnconfigure(1, weight=1)
@@ -42,9 +49,9 @@ class SearchRecipes(tk.Frame):
         fetch_button.grid(row=2, column=2, pady=5)
 
         # Text widget for displaying results
-        self.results_text = tk.Text(self, height=20, width=60, state=tk.DISABLED, borderwidth=2, wrap=tk.WORD,
+        self.results_text = tk.Text(self, height=30, width=50, state=tk.DISABLED, borderwidth=2, wrap=tk.WORD,
                                     font=ENTRY_FONT)
-        self.results_text.grid(row=3, column=1, columnspan=3, padx=10, pady=10, sticky='nsew')
+        self.results_text.grid(row=3, column=1, columnspan=2, padx=10, pady=10, sticky='nsw')
 
         # Vertical Scrollbar
         scrollbar = tk.Scrollbar(self, command=self.results_text.yview)
@@ -52,7 +59,7 @@ class SearchRecipes(tk.Frame):
         self.results_text.config(yscrollcommand=scrollbar.set)
 
         self.image_canvas = tk.Canvas(self, width=100, height=100)
-        self.image_canvas.grid(row=3, column=0, padx=0, pady=10, sticky='nsew')
+        self.image_canvas.grid(row=3, column=0, padx=10, pady=10, sticky='nsew')
 
     def back_to_main_menu(self):
         from frames.main_menu_frame import MainMenu

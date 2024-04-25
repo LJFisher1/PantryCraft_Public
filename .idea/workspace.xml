@@ -5,9 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a75512d-ce09-4edf-aecf-fecfec53cf7b" name="Changes" comment="Install requests / prune code">
+      <change afterPath="$PROJECT_DIR$/background_images/Berry Smoothie.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background_images/Create with Pantry.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background_images/Ingredient Search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background_images/Main Menu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background_images/Meal Planner.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background_images/Pantry Inventory.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background_images/Recipe Search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/background_images/Shopping List.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/main_menu_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/main_menu_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/meal_planner_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/meal_planner_frame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frames/pantry_inventory_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/pantry_inventory_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/search_by_ingredient_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/search_by_ingredient_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/search_recipes_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/search_recipes_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/shopping_list_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/shopping_list_frame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pantry_inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pantry_inventory.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipes_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes_search.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopping_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/shopping_list.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +62,11 @@
     &quot;last_opened_file_path&quot;: &quot;D:/PyCharm Projects/Pantry_Craft&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\PyCharm Projects\Pantry_Craft\background_images" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>

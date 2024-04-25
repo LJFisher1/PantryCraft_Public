@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
-
 from config import HEADER_FONT, LABEL_FONT, ENTRY_FONT
+from recipes_search import load_background_image
 
 
 class PantryInventory(tk.Frame):
@@ -10,6 +10,14 @@ class PantryInventory(tk.Frame):
         self.controller = controller
 
         self.pantry_inventory = "pantry_inventory.txt"
+
+        # Load background image
+        background_image = load_background_image("background_images/Pantry Inventory.png")
+        if background_image:
+            # Create a label to hold the image
+            self.background_label = tk.Label(self, image=background_image)
+            self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+            self.background_label.image = background_image  # To keep a reference
 
         # Title
         label = tk.Label(self, text="Pantry Inventory", font=HEADER_FONT, bg="Black", fg="White")

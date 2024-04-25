@@ -162,8 +162,12 @@ def display_recipes(recipes, text_widget, canvas_widget):
     text_widget.config(state=tk.DISABLED)
     return images
 
-# def display_image(text_widget, image):
-#     # Display image in the Text widget
-#     text_widget.image_create(tk.END, image=image)
-#     # Add a newline after each image
-#     text_widget.insert(tk.END, "\n")
+
+def load_background_image(image_path):
+    try:
+        image = Image.open(image_path)
+        tk_image = ImageTk.PhotoImage(image)
+        return tk_image
+    except Exception as e:
+        print("Failed to load background image: ", e)
+        return None

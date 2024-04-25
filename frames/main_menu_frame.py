@@ -6,6 +6,7 @@ from .pantry_inventory_frame import PantryInventory
 from .search_recipes_frame import SearchRecipes
 from .create_with_pantry_frame import CreateWithPantry
 from config import ENTRY_FONT, HEADER_FONT
+from recipes_search import load_background_image
 
 
 class MainMenu(tk.Frame):
@@ -13,13 +14,21 @@ class MainMenu(tk.Frame):
         tk.Frame.__init__(self, parent, bg="Black")
         self.controller = controller
 
+        # Load background image
+        background_image = load_background_image("background_images/Main Menu.png")
+        if background_image:
+            # Create a label to hold the image
+            self.background_label = tk.Label(self, image=background_image)
+            self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+            self.background_label.image = background_image  # To keep a reference
+
+        label = tk.Label(self, text="Main Menu", font=HEADER_FONT, bg="Black", fg="White")
+        label.grid(row=0, column=0, columnspan=2, padx=10, sticky="new")
+
         button_width = 20
         button_height = 5
         button_xpad = 20
         button_ypad = 20
-
-        label = tk.Label(self, text="Main Menu", font=HEADER_FONT, bg="Black", fg="White")
-        label.grid(row=0, column=0, columnspan=2, padx=10, sticky="new")
 
         meal_planner_button = tk.Button(self, text="Meal Planner", width=button_width, height=button_height,
                                         font=ENTRY_FONT,
