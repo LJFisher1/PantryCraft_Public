@@ -79,46 +79,21 @@ def get_recipe_instructions(recipe_id):
 def instructions_window():
     def fetch_instructions():
         recipe_id = recipe_id_entry.get()
-        try:
-            instructions = get_recipe_instructions(recipe_id)
-            if instructions:
-                instructions_text.config(state=tk.NORMAL)
-                instructions_text.delete('1.0', tk.END)
-                for step in instructions[0]['steps']:
-                    instruction_text = format_instructions(step)
-                    instructions_text.insert(tk.END, instruction_text)
-                    instructions_text.insert(tk.END, '\n\n')
-                    instructions_text.see(tk.END)  # Scroll to the end to show the latest instruction
-                    instructions_text.update_idletasks()  # Update the text widget to show the new instruction
-                instructions_text.config(state=tk.DISABLED)
-            else:
-                instructions_text.config(state=tk.NORMAL)
-                instructions_text.delete('1.0', tk.END)
-                instructions_text.insert(tk.END, 'Instructions not found for this recipe.')
-                instructions_text.config(state=tk.DISABLED)
-        except Exception as e:
+        instructions = get_recipe_instructions(recipe_id)
+
+        # print(f"Recipe ID entered: {recipe_id}")  # Debug print
+        # print(instructions)
+        if instructions:
             instructions_text.config(state=tk.NORMAL)
             instructions_text.delete('1.0', tk.END)
-            instructions_text.insert(tk.END, f'Error fetching instructions: {e}')
+            formatted_instructions = format_instructions(instructions)
+            instructions_text.insert(tk.END, formatted_instructions)
             instructions_text.config(state=tk.DISABLED)
-
-    # def fetch_instructions():
-    #     recipe_id = recipe_id_entry.get()
-    #     try:
-    #         instructions = get_recipe_instructions(recipe_id)
-    #         # print(f"Recipe ID entered: {recipe_id}")  # Debug print
-    #         # print(instructions)
-    #         if instructions:
-    #             instructions_text.config(state=tk.NORMAL)
-    #             instructions_text.delete('1.0', tk.END)
-    #             formatted_instructions = format_instructions(instructions)
-    #             instructions_text.insert(tk.END, formatted_instructions)
-    #             instructions_text.config(state=tk.DISABLED)
-    #         else:
-    #             instructions_text.config(state=tk.NORMAL)
-    #             instructions_text.delete('1.0', tk.END)
-    #             instructions_text.insert(tk.END, 'Instructions not found for this recipe.')
-    #             instructions_text.config(state=tk.DISABLED)
+        else:
+            instructions_text.config(state=tk.NORMAL)
+            instructions_text.delete('1.0', tk.END)
+            instructions_text.insert(tk.END, 'Instructions not found for this recipe.')
+            instructions_text.config(state=tk.DISABLED)
 
     window = tk.Toplevel()
     window.title("Recipe Instructions")
