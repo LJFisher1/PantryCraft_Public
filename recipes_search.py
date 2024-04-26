@@ -4,6 +4,8 @@ from config import HEADERS, ENTRY_FONT, format_instructions, LABEL_FONT
 from PIL import Image, ImageTk
 from io import BytesIO
 
+images = []
+
 
 def search_recipes(search_params, number=None):
     recipe_search_url = "https://api.spoonacular.com/recipes/complexSearch"
@@ -126,12 +128,18 @@ def load_image(image_url):
 
 
 def display_recipes(recipes, text_widget, canvas_widget):
+
+    # Global variable to store image references
+    global images
+    # Clears previous image results before adding new ones
+    images.clear()
+
     print("display_recipes called")
     text_widget.config(state=tk.NORMAL)
     text_widget.delete(1.0, tk.END)  # Clears previous results
     image_y = 100
     text_x = 150
-    images = []
+    # images = []
     i = 0
 
     if not recipes:
@@ -147,8 +155,6 @@ def display_recipes(recipes, text_widget, canvas_widget):
 
                 if image:
                     # Display image in the Canvas widget
-                    # text_widget.image_create(tk.END, image=image)
-                    # text_widget.insert(tk.END, "\n")
                     canvas_image = canvas_widget.create_image(text_x, image_y, anchor=tk.W, image=image)
                     # canvas_widget.image = image # Save a reference to prevent garbage collection
                     images.append((image, canvas_image))
@@ -156,6 +162,12 @@ def display_recipes(recipes, text_widget, canvas_widget):
                     text_widget.update_idletasks()
                     canvas_widget.update_idletasks()
                     print(f"Image {i} printed")
+
+                    # Adjust canvas height and scrolling region
+                    canvas_height = image_y + 250
+                    canvas_widget.config(scrollregion=(0, 0, 0, canvas_height))
+                    print("Canvas scroll region:", canvas_widget.cget("scrollregion"))
+
                 image_y += 250
 
             text_widget.insert(tk.END, "\n")  # Add a line break after each result

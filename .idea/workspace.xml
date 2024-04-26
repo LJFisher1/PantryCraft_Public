@@ -5,26 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1a75512d-ce09-4edf-aecf-fecfec53cf7b" name="Changes" comment="Install requests / prune code">
-      <change afterPath="$PROJECT_DIR$/background_images/Berry Smoothie.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background_images/Create with Pantry.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background_images/Ingredient Search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background_images/Main Menu.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background_images/Meal Planner.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background_images/Pantry Inventory.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background_images/Recipe Search.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/background_images/Shopping List.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/main_menu_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/main_menu_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/meal_planner_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/meal_planner_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/pantry_inventory_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/pantry_inventory_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/search_by_ingredient_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/search_by_ingredient_frame.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frames/search_recipes_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/search_recipes_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/shopping_list_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/shopping_list_frame.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pantry_inventory.txt" beforeDir="false" afterPath="$PROJECT_DIR$/pantry_inventory.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/recipes_search.py" beforeDir="false" afterPath="$PROJECT_DIR$/recipes_search.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopping_list.txt" beforeDir="false" afterPath="$PROJECT_DIR$/shopping_list.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,27 +28,53 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main_menu_frame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.meal_planner_frame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pantry_inventory_frame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.recipes_search.executor&quot;: &quot;Run&quot;,
-    &quot;Python.search_by_ingredient_frame.executor&quot;: &quot;Run&quot;,
-    &quot;Python.search_recipes_frame.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/PyCharm Projects/Pantry_Craft&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.Pantry_Craft.executor": "Debug",
+    "Python.main.executor": "Run",
+    "Python.main_menu_frame.executor": "Run",
+    "Python.meal_planner_frame.executor": "Run",
+    "Python.pantry_inventory_frame.executor": "Run",
+    "Python.recipes_search.executor": "Run",
+    "Python.search_by_ingredient_frame.executor": "Run",
+    "Python.search_recipes_frame.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "D:/PyCharm Projects/Pantry_Craft/main.py"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\PyCharm Projects\Pantry_Craft\background_images" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="Pantry_Craft" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.12 (Pantry_Craft)" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -98,5 +107,16 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Install requests / prune code" />
     <option name="LAST_COMMIT_MESSAGE" value="Install requests / prune code" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
