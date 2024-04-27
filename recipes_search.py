@@ -1,3 +1,4 @@
+import asyncio
 import requests
 import tkinter as tk
 from config import HEADERS, ENTRY_FONT, format_instructions, LABEL_FONT
@@ -36,76 +37,55 @@ def search_recipes_by_ingredient(ingredients_input, number):
     return recipes_data
 
 
-def get_recipe_instructions(recipe_id):
-    instructions_url = f"https://api.spoonacular.com/recipes/{recipe_id}/analyzedInstructions"
-    response = requests.get(url=instructions_url, headers=HEADERS)
+def get_recipe_instructions_bulk(recipe_ids):
+    instructions_url = "https://api.spoonacular.com/recipes/informationBulk"
+    params = {"ids": ",".join(str(id) for id in recipe_ids)}
+
+    response = requests.get(url=instructions_url, params=params, headers=HEADERS)
     instructions_data = response.json()
 
-    if instructions_data and instructions_data[0].get('steps'):
-        for step in instructions_data[0]['steps']:
-            if 'ingredients' in step:
-                for ingredient in step['ingredients']:
-                    ingredient_id = ingredient.get('id')
-                    if ingredient_id:
-                        # Call the endpoint to get ingredient details
-                        ingredient_widget_url = f"https://api.spoonacular.com/recipes/{recipe_id}/ingredientWidget.json"
-                        ingredient_response = requests.get(url=ingredient_widget_url, headers=HEADERS)
-                        ingredient_widget_data = ingredient_response.json()
-                        # Extract the measurements
-                        for widget_ingredient in ingredient_widget_data['ingredients']:
-                            if widget_ingredient.get('id') == ingredient_id:
-                                # measurement = None
-                                if 'amount' in widget_ingredient and 'metric' in widget_ingredient['amount']:
-                                    metric_amount = widget_ingredient['amount']['metric']
-                                    if metric_amount['unit']:  # Check if unit value is not empty
-                                        measurement = {
-                                            'amount': metric_amount['value'],
-                                            'unit': metric_amount['unit']
-                                        }
-                                    else:
-                                        measurement = {
-                                            'amount': metric_amount['value'],
-                                            'unit': ''  # Set unit to empty string if it's empty in the API response
-                                        }
-                                else:
-                                    measurement = None
-                                # Add the measurement to the ingredient dictionary
-                                ingredient['measurement'] = measurement
-                            # print("Widget Ingredient: ", widget_ingredient)
+    instructions_map = {recipe['id']: recipe.get('analyzedInstructions') for recipe in instructions_data}
 
-    return instructions_data
+    return instructions_map
+
+
+def run_asyncio(recipe_id_entry, instructions_text):
+    async def fetch_instructions_async(recipe_id_entry, instructions_text):
+        recipe_ids = recipe_id_entry.get().split(',')
+        instructions_map = get_recipe_instructions_bulk(recipe_ids)
+
+        for recipe_id in recipe_ids:
+            instructions = instructions_map.get(int(recipe_id))
+            instructions_text.config(state=tk.NORMAL)
+            instructions_text.delete('1.0', tk.END)
+
+            if instructions:
+                formatted_instructions = format_instructions(instructions)
+                instructions_text.insert(tk.END, formatted_instructions)
+            else:
+                instructions_text.insert(tk.END, f'Instructions not found for recipe ID: {recipe_id}')
+
+        instructions_text.config(state=tk.DISABLED)
+
+    async def main(recipe_id_entry, instructions_text):
+        await fetch_instructions_async(recipe_id_entry, instructions_text)
+
+    asyncio.run(main(recipe_id_entry, instructions_text))
 
 
 def instructions_window():
-    def fetch_instructions():
-        recipe_id = recipe_id_entry.get()
-        instructions = get_recipe_instructions(recipe_id)
-
-        # print(f"Recipe ID entered: {recipe_id}")  # Debug print
-        # print(instructions)
-        if instructions:
-            instructions_text.config(state=tk.NORMAL)
-            instructions_text.delete('1.0', tk.END)
-            formatted_instructions = format_instructions(instructions)
-            instructions_text.insert(tk.END, formatted_instructions)
-            instructions_text.config(state=tk.DISABLED)
-        else:
-            instructions_text.config(state=tk.NORMAL)
-            instructions_text.delete('1.0', tk.END)
-            instructions_text.insert(tk.END, 'Instructions not found for this recipe.')
-            instructions_text.config(state=tk.DISABLED)
-
     window = tk.Toplevel()
     window.title("Recipe Instructions")
 
     # Label and entry for recipe ID
-    label = tk.Label(window, text="Enter recipe ID", font=LABEL_FONT)
+    label = tk.Label(window, text="Enter comma-separated recipe IDs", font=LABEL_FONT)
     label.pack()
     recipe_id_entry = tk.Entry(window, font=ENTRY_FONT)
     recipe_id_entry.pack()
 
     # Button for fetching
-    fetch_button = tk.Button(window, text="Get Instructions", font=ENTRY_FONT, command=fetch_instructions)
+    fetch_button = tk.Button(window, text="Get Instructions", font=ENTRY_FONT,
+                             command=lambda: run_asyncio(recipe_id_entry, instructions_text))
     fetch_button.pack()
 
     # Text widget to display instructions
@@ -113,6 +93,87 @@ def instructions_window():
                                 font=ENTRY_FONT)
     instructions_text.pack()
 
+    window.mainloop()
+
+
+#
+# def get_recipe_instructions(recipe_id):
+#     instructions_url = f"https://api.spoonacular.com/recipes/{recipe_id}/analyzedInstructions"
+#     response = requests.get(url=instructions_url, headers=HEADERS)
+#     instructions_data = response.json()
+#
+#     if instructions_data and instructions_data[0].get('steps'):
+#         for step in instructions_data[0]['steps']:
+#             if 'ingredients' in step:
+#                 for ingredient in step['ingredients']:
+#                     ingredient_id = ingredient.get('id')
+#                     if ingredient_id:
+#                         # Call the endpoint to get ingredient details
+#                         ingredient_widget_url = f"https://api.spoonacular.com/recipes/{recipe_id}/ingredientWidget.json"
+#                         ingredient_response = requests.get(url=ingredient_widget_url, headers=HEADERS)
+#                         ingredient_widget_data = ingredient_response.json()
+#                         # Extract the measurements
+#                         for widget_ingredient in ingredient_widget_data['ingredients']:
+#                             if widget_ingredient.get('id') == ingredient_id:
+#                                 # measurement = None
+#                                 if 'amount' in widget_ingredient and 'metric' in widget_ingredient['amount']:
+#                                     metric_amount = widget_ingredient['amount']['metric']
+#                                     if metric_amount['unit']:  # Check if unit value is not empty
+#                                         measurement = {
+#                                             'amount': metric_amount['value'],
+#                                             'unit': metric_amount['unit']
+#                                         }
+#                                     else:
+#                                         measurement = {
+#                                             'amount': metric_amount['value'],
+#                                             'unit': ''  # Set unit to empty string if it's empty in the API response
+#                                         }
+#                                 else:
+#                                     measurement = None
+#                                 # Add the measurement to the ingredient dictionary
+#                                 ingredient['measurement'] = measurement
+#                             # print("Widget Ingredient: ", widget_ingredient)
+#
+#     return instructions_data
+#
+#
+# def instructions_window():
+#     def fetch_instructions():
+#         recipe_id = recipe_id_entry.get()
+#         instructions = get_recipe_instructions(recipe_id)
+#
+#         # print(f"Recipe ID entered: {recipe_id}")  # Debug print
+#         # print(instructions)
+#         if instructions:
+#             instructions_text.config(state=tk.NORMAL)
+#             instructions_text.delete('1.0', tk.END)
+#             formatted_instructions = format_instructions(instructions)
+#             instructions_text.insert(tk.END, formatted_instructions)
+#             instructions_text.config(state=tk.DISABLED)
+#         else:
+#             instructions_text.config(state=tk.NORMAL)
+#             instructions_text.delete('1.0', tk.END)
+#             instructions_text.insert(tk.END, 'Instructions not found for this recipe.')
+#             instructions_text.config(state=tk.DISABLED)
+#
+#     window = tk.Toplevel()
+#     window.title("Recipe Instructions")
+#
+#     # Label and entry for recipe ID
+#     label = tk.Label(window, text="Enter recipe ID", font=LABEL_FONT)
+#     label.pack()
+#     recipe_id_entry = tk.Entry(window, font=ENTRY_FONT)
+#     recipe_id_entry.pack()
+#
+#     # Button for fetching
+#     fetch_button = tk.Button(window, text="Get Instructions", font=ENTRY_FONT, command=fetch_instructions)
+#     fetch_button.pack()
+#
+#     # Text widget to display instructions
+#     instructions_text = tk.Text(window, height=20, width=55, state=tk.DISABLED, borderwidth=1, wrap=tk.WORD,
+#                                 font=ENTRY_FONT)
+#     instructions_text.pack()
+#
 
 def load_image(image_url):
     response = requests.get(image_url)
