@@ -51,15 +51,15 @@ class SearchRecipes(tk.Frame):
         # Text widget for displaying results
         self.results_text = tk.Text(self, height=30, width=50, state=tk.DISABLED, borderwidth=2, wrap=tk.WORD,
                                     font=ENTRY_FONT)
-        self.results_text.grid(row=3, column=1, columnspan=2, padx=10, pady=10, sticky='nsw')
+        self.results_text.grid(row=3, column=1, columnspan=2, padx=10, pady=(5, 15), sticky='nsw')
 
         # Vertical Scrollbar for results
         scrollbar = tk.Scrollbar(self, command=self.results_text.yview)
         scrollbar.grid(row=3, column=3, sticky="nsew")
         self.results_text.config(yscrollcommand=scrollbar.set)
 
-        self.image_canvas = tk.Canvas(self, width=100, height=100)
-        self.image_canvas.grid(row=3, column=0, padx=10, pady=10, sticky='nsew')
+        self.image_canvas = tk.Canvas(self, width=100, height=100, borderwidth=2)
+        self.image_canvas.grid(row=3, column=0, padx=(25, 10), pady=(10, 15), sticky='nsew')
 
         # Vertical scrollbar for canvas
         scrollbar = tk.Scrollbar(self, orient="vertical", command=self.image_canvas.yview)
