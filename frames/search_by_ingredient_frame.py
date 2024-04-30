@@ -21,25 +21,18 @@ class SearchByIngredient(tk.Frame):
         label.grid(row=0, column=0, columnspan=4, pady=10, padx=10)
 
         # Ingredient entry
-        ie_label_one = tk.Label(self, text="Enter first ingredient: ", font=LABEL_FONT, bg="Black", fg="White")
-        ie_label_one.grid(row=1, column=0, padx=5, pady=(5, 0))
-        self.item_entry_one = tk.Entry(self, width=10, highlightthickness=2, font=ENTRY_FONT)
-        self.item_entry_one.grid(row=1, column=1, padx=10, pady=5)
+        self.entry_fields = []
+        for i in range(4):
+            label_text = f"Enter ingredient {i + 1}: "
+            label = tk.Label(self, text=label_text, font=LABEL_FONT, bg="Black", fg="White")
+            label.grid(row=i + 1, column=0, padx=5, pady=(5, 0))
 
-        ie_label_two = tk.Label(self, text="Enter second ingredient: ", font=LABEL_FONT, bg="Black", fg="White")
-        ie_label_two.grid(row=2, column=0, padx=5, pady=(5, 0))
-        self.item_entry_two = tk.Entry(self, width=10, highlightthickness=2, font=ENTRY_FONT)
-        self.item_entry_two.grid(row=2, column=1, padx=10, pady=5)
-
-        ie_label_three = tk.Label(self, text="Enter third ingredient: ", font=LABEL_FONT, bg="Black", fg="White")
-        ie_label_three.grid(row=3, column=0, padx=5, pady=(5, 0))
-        self.item_entry_three = tk.Entry(self, width=10, highlightthickness=2, font=ENTRY_FONT)
-        self.item_entry_three.grid(row=3, column=1, padx=10, pady=10)
-
-        ie_label_four = tk.Label(self, text="Enter fourth ingredient: ", font=LABEL_FONT, bg="Black", fg="White")
-        ie_label_four.grid(row=4, column=0, padx=5, pady=(5, 0))
-        self.item_entry_four = tk.Entry(self, width=10, highlightthickness=2, font=ENTRY_FONT)
-        self.item_entry_four.grid(row=4, column=1, padx=10, pady=10)
+            entry = tk.Entry(self, width=10, highlightthickness=2, font=("Helvetica", 14, "normal"), fg="Grey")
+            entry.grid(row=i + 1, column=1, padx=10, pady=5)
+            entry.insert(0, "Enter an item")
+            entry.bind("<FocusIn>", self.clear_entry)
+            entry.bind("<FocusOut>", self.restore_entry)
+            self.entry_fields.append(entry)
 
         # Search Button
         sr_button = tk.Button(self, text="Search", command=self.search_by_ingredient_button, font=LABEL_FONT)
@@ -62,11 +55,16 @@ class SearchByIngredient(tk.Frame):
 
     def search_by_ingredient_button(self):
         try:
+            for entry in self.entry_fields:
+                entry_value = entry.get()
+                if entry_value == "Enter an item":
+                    entry.delete(0, tk.END)
+
             # Get input from the user
-            ingredient_one = self.item_entry_one.get()
-            ingredient_two = self.item_entry_two.get()
-            ingredient_three = self.item_entry_three.get()
-            ingredient_four = self.item_entry_four.get()
+            ingredient_one = self.entry_fields[0].get()
+            ingredient_two = self.entry_fields[1].get()
+            ingredient_three = self.entry_fields[2].get()
+            ingredient_four = self.entry_fields[3].get()
 
             # Prepare list of ingredients
             ingredients = [ingredient for ingredient in
@@ -100,12 +98,20 @@ class SearchByIngredient(tk.Frame):
                 ingredient_unit = ingredient.get('unit', 'Unknown Unit')
                 used_ingredients_info += f"{ingredient_amount} {ingredient_unit} {ingredient_name}\n"
 
-            # recipe_info = f"Title: {recipe_title}\nUsed Ingredients:\n{used_ingredients_info}\nImage: {recipe_image}\nID: {recipe_id}\n\n"
             recipe_info = f"Title: {recipe_title}\nID: {recipe_id}\nUsed Ingredients:\n{used_ingredients_info}\n\n"
 
             self.results_text.insert(tk.END, f"{recipe_info}\n")
 
         self.results_text.config(state=tk.DISABLED)
 
-        # Debug print
-        # print(recipes)
+    def clear_entry(self, event):
+        entry = event.widget
+        if entry.get() == "Enter an item":
+            entry.delete(0, tk.END)
+            entry.config(fg="Grey")
+
+    def restore_entry(self, event):
+        entry = event.widget
+        if not entry.get():
+            entry.insert(0, "Enter an item")
+            entry.config(fg="Grey")
