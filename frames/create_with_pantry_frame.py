@@ -25,22 +25,32 @@ class CreateWithPantry(tk.Frame):
         self.pantry_inventory_label.grid(row=2, column=0, sticky='n')
 
         # Pantry Inventory text box
-        self.pantry_inventory_text = tk.Text(self, height=20, width=40, font=ENTRY_FONT)
+        self.pantry_inventory_text = tk.Text(self, height=20, width=40, font=ENTRY_FONT, state=tk.NORMAL)
         self.pantry_inventory_text.grid(row=3, column=0, padx=10, pady=10, sticky='nsew')
+
+        # Pantry Inventory scrollbar
+        pantry_scrollbar = tk.Scrollbar(self, command=self.pantry_inventory_text.yview)
+        pantry_scrollbar.grid(row=3, column=0, sticky='nse')
 
         # Meal display label
         self.meals_display_label = tk.Label(self, text="You can make: ", font=LABEL_FONT, bg="Black", fg="White")
         self.meals_display_label.grid(row=2, column=1, sticky='n')
 
         # Meal display box
-        self.meals_display_text = tk.Text(self, height=20, width=40, font=ENTRY_FONT)
+        self.meals_display_text = tk.Text(self, height=20, width=40, font=ENTRY_FONT, state=tk.NORMAL)
         self.meals_display_text.grid(row=3, column=1, padx=10, pady=10, sticky='nsew')
+
+        # Scrollbar for meal display
+        meals_scrollbar = tk.Scrollbar(self, command=self.meals_display_text.yview)
+        meals_scrollbar.grid(row=3, column=1, sticky='nse')
 
         # Load pantry inventory
         self.load_pantry_inventory()
+        self.pantry_inventory_text.config(state=tk.DISABLED)
 
         # Load meals based on pantry inventory
         self.load_meals()
+        self.meals_display_text.config(state=tk.DISABLED)
 
         from .main_menu_frame import MainMenu
 

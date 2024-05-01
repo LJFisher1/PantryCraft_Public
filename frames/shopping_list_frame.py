@@ -21,13 +21,13 @@ class ShoppingList(tk.Frame):
 
         # Text Widget to display shopping list
         self.shopping_list_text = tk.Text(self, font=ENTRY_FONT, height=10, width=30)
-        self.shopping_list_text.grid(row=2, column=0, pady=5, padx=10, sticky="nsew")
+        self.shopping_list_text.grid(row=2, column=0, pady=(5, 25), padx=(20, 15), sticky="nsew")
         self.grid_rowconfigure(2, weight=1)
         self.grid_columnconfigure(0, weight=1)
 
         # Entry field for new items
-        self.new_item_entry = tk.Entry(self, font=ENTRY_FONT, fg="grey")
-        self.new_item_entry.grid(row=1, column=0, padx=10, sticky='ew')
+        self.new_item_entry = tk.Entry(self, font=ENTRY_FONT, fg="grey", highlightthickness=2)
+        self.new_item_entry.grid(row=1, column=0, padx=(20, 15), sticky='ew')
         self.new_item_entry.insert(0, "Enter an item")
         self.new_item_entry.bind("<FocusIn>", self.clear_entry)
         self.new_item_entry.bind("<FocusOut>", self.restore_entry)

@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="1a75512d-ce09-4edf-aecf-fecfec53cf7b" name="Changes" comment="Install requests / prune code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frames/search_by_ingredient_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/search_by_ingredient_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/create_with_pantry_frame.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frames/shopping_list_frame.py" beforeDir="false" afterPath="$PROJECT_DIR$/frames/shopping_list_frame.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
